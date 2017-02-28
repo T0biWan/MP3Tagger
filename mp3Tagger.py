@@ -1,5 +1,5 @@
 import os
 
 
-def readData(path):
+def readDirectory(path):
     return os.listdir(path)
