@@ -7,3 +7,4 @@ Unittests enabled through Python's unittest-module.
 
 ## Functionality
 - Read files from directory
+- Filter for mp3-data only
