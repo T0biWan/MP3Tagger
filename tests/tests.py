@@ -24,12 +24,29 @@ class MP3TaggerShould(unittest.TestCase):
         actual = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))
         self.assertEqual(actual, expected)
 
+    def test_getTitle(self):
+        expected = "Raining Blood"
+        actual = mp3Tagger.readDirectory("exampleData")
+        actual = mp3Tagger.filterMP3(actual)
+        actual = mp3Tagger.getTitle("exampleData/" + actual[1])
+
+        self.assertEqual(actual, expected)
+
+    def test_getArtist(self):
+        expected = "Slayer"
+        actual = mp3Tagger.readDirectory("exampleData")
+        actual = mp3Tagger.filterMP3(actual)
+        actual = mp3Tagger.getArtist("exampleData/" + actual[1])
+
+        self.assertEqual(actual, expected)
 
 # Was ist mit Verzeichnissen in verzeichnissen oder Dateien die nicht .mp3 sind?
 # Am besten womöglich rekursiv reingehen
-# Filtern auf mp3-Dateien
 # Informationen mit Mutagen geben lassen
 # Methoden anbieten um dinge zu verändern
+# Operationen entwede rmit verschiedenen Skripten oder über config datei anbieten
+# https://martin-thoma.com/configuration-files-in-python/
+
 # Tracks = Titel
 
 def main():
