@@ -40,6 +40,14 @@ class MP3TaggerShould(unittest.TestCase):
 
         self.assertEqual(actual, expected)
 
+    def test_getAlbum(self):
+        expected = "Soundtrack To The Apocalypse - Best Of"
+        actual = mp3Tagger.readDirectory("exampleData")
+        actual = mp3Tagger.filterMP3(actual)
+        actual = mp3Tagger.getAlbum("exampleData/" + actual[1])
+
+        self.assertEqual(actual, expected)
+
 # Was ist mit Verzeichnissen in verzeichnissen oder Dateien die nicht .mp3 sind?
 # Am besten womöglich rekursiv reingehen
 # Informationen mit Mutagen geben lassen
