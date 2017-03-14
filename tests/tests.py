@@ -3,6 +3,24 @@ import mp3Tagger
 
 
 class MP3TaggerShould(unittest.TestCase):
+    def setUp(self):
+        songs = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))
+
+        mp3Tagger.setTitle("exampleData/" + songs[1], "Raining Blood")
+        mp3Tagger.setArtist("exampleData/" + songs[1], "Slayer")
+        mp3Tagger.setAlbum("exampleData/" + songs[1], "Soundtrack To The Apocalypse - Best Of")
+        mp3Tagger.setTrack("exampleData/" + songs[1], "01")
+        mp3Tagger.setYear("exampleData/" + songs[1], "2003")
+        mp3Tagger.setGenre("exampleData/" + songs[1], "Thrash Metal")
+
+        mp3Tagger.setTitle("exampleData/" + songs[2], "Agent Orange")
+        mp3Tagger.setArtist("exampleData/" + songs[2], "Sodom")
+        mp3Tagger.setAlbum("exampleData/" + songs[2], "Agent Orange")
+        mp3Tagger.setTrack("exampleData/" + songs[2], "01")
+        mp3Tagger.setYear("exampleData/" + songs[2], "1989")
+        mp3Tagger.setGenre("exampleData/" + songs[2], "Thrash Metal")
+
+
     def test_readDirectorySucceeds(self):
         expected = ["folder.png",
                     "Ray Parker, Jr. - Ghostbusters - Ghostbusters - Mr. Metal +.mp3",
