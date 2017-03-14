@@ -20,7 +20,6 @@ class MP3TaggerShould(unittest.TestCase):
         mp3Tagger.setYear("exampleData/" + songs[2], "1989")
         mp3Tagger.setGenre("exampleData/" + songs[2], "Thrash Metal")
 
-
     def test_readDirectorySucceeds(self):
         expected = ["folder.png",
                     "Ray Parker, Jr. - Ghostbusters - Ghostbusters - Mr. Metal +.mp3",

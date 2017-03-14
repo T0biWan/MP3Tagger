@@ -1,10 +1,6 @@
 import os
-import mutagen
 from mutagen.easyid3 import EasyID3
 
-# Dictionary for ID3v2.4.0 tags
-ID3v24 = {"title": "TIT2", "artist": "TPE1", "album": "TALB", "track": "TRCK", "year": "TDRC", "genre": "TCON",
-          "comment": "COMM"}
 
 def readDirectory(path):
     return os.listdir(path)
@@ -19,29 +15,28 @@ def filterMP3(list):
 
 
 def getTitle(song):
-    song = mutagen.File(song)
-    return song[ID3v24['title']].text[0]
-
+    song = EasyID3(song)
+    return song["title"][0]
 
 def getArtist(song):
-    song = mutagen.File(song)
-    return song[ID3v24['artist']].text[0]
+    song = EasyID3(song)
+    return song["artist"][0]
 
 def getAlbum(song):
-    song = mutagen.File(song)
-    return song[ID3v24['album']].text[0]
+    song = EasyID3(song)
+    return song["album"][0]
 
 def getTrack(song):
-    song = mutagen.File(song)
-    return song[ID3v24['track']].text[0]
+    song = EasyID3(song)
+    return song["tracknumber"][0]
 
 def getYear(song):
-    song = mutagen.File(song)
-    return song[ID3v24['year']].text[0]
+    song = EasyID3(song)
+    return song["date"][0]
 
 def getGenre(song):
-    song = mutagen.File(song)
-    return song[ID3v24['genre']].text[0]
+    song = EasyID3(song)
+    return song["genre"][0]
 
 def setTitle(song, title):
     song = EasyID3(song)
