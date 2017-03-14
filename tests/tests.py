@@ -130,7 +130,6 @@ class MP3TaggerShould(unittest.TestCase):
 # Skript: Track nummern vergeben, Titel = Track, Dateien umbenennen nach festgelegtem Schema
 
 # Exception schrieben falls ein feld leer ist!
-# Beispieldateien umbenennen...erster song: testFileForGetter, zweiter song: testFileForSetter usw.
 
 def main():
     unittest.main()
