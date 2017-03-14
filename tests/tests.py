@@ -76,35 +76,35 @@ class MP3TaggerShould(unittest.TestCase):
 
     def test_setArtist(self):
         expected = "Artist"
-        song = song = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))[2]
+        song = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))[2]
         mp3Tagger.setArtist("exampleData/" + song, "Artist")
         actual = mp3Tagger.getArtist("exampleData/" + song)
         self.assertEqual(expected, actual)
 
     def test_setAlbum(self):
         expected = "Album"
-        song = song = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))[2]
+        song = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))[2]
         mp3Tagger.setAlbum("exampleData/" + song, "Album")
         actual = mp3Tagger.getAlbum("exampleData/" + song)
         self.assertEqual(expected, actual)
 
     def test_setTrack(self):
         expected = "Track"
-        song = song = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))[2]
+        song = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))[2]
         mp3Tagger.setTrack("exampleData/" + song, "Track")
         actual = mp3Tagger.getTrack("exampleData/" + song)
         self.assertEqual(expected, actual)
 
     def test_setYear(self):
         expected = "1000"
-        song = song = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))[2]
+        song = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))[2]
         mp3Tagger.setYear("exampleData/" + song, "1000")
         actual = mp3Tagger.getYear("exampleData/" + song)
         self.assertEqual(expected, str(actual))
 
     def test_setGenre(self):
         expected = "Genre"
-        song = song = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))[2]
+        song = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))[2]
         mp3Tagger.setGenre("exampleData/" + song, "Genre")
         actual = mp3Tagger.getGenre("exampleData/" + song)
         self.assertEqual(expected, actual)
