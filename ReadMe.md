@@ -7,4 +7,5 @@ Unittests enabled through Python's unittest-module.
 
 ## Functionality
 - Read files from directory
-- Filter for mp3-data only
+- Filter for mp3-data
+- Get and set title, artist, album, track, year and genre
