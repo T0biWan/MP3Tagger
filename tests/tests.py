@@ -11,19 +11,21 @@ class MP3TaggerShould(unittest.TestCase):
         mp3Tagger.setAlbum("exampleData/" + songs[0], "audioSample")
         mp3Tagger.setTrack("exampleData/" + songs[0], "01")
         mp3Tagger.setYear("exampleData/" + songs[0], "2017")
-        mp3Tagger.setGenre("exampleData/" + songs[0], "Thrash Metal")
+        mp3Tagger.setGenre("exampleData/" + songs[0], "sample")
+        mp3Tagger.setComment("exampleData/" + songs[0], "comment")
 
         mp3Tagger.setTitle("exampleData/" + songs[1], "audioSample")
         mp3Tagger.setArtist("exampleData/" + songs[1], "testFile")
         mp3Tagger.setAlbum("exampleData/" + songs[1], "audioSample")
         mp3Tagger.setTrack("exampleData/" + songs[1], "02")
         mp3Tagger.setYear("exampleData/" + songs[1], "2017")
-        mp3Tagger.setGenre("exampleData/" + songs[1], "Thrash Metal")
+        mp3Tagger.setGenre("exampleData/" + songs[1], "sample")
+        mp3Tagger.setComment("exampleData/" + songs[1], "comment")
 
     def test_readDirectorySucceeds(self):
         expected = ["folder.png",
-                    "testFile - testFileForGetter - audioSample.mp3",
-                    "testFile - testFileForSetter - audioSample.mp3"]
+                    "testFile - testFileForGetter - audioSample - comment.mp3",
+                    "testFile - testFileForSetter - audioSample - comment.mp3"]
         actual = mp3Tagger.readDirectory("exampleData")
         self.assertEqual(expected, actual)
 
@@ -33,8 +35,8 @@ class MP3TaggerShould(unittest.TestCase):
         self.assertNotEqual(expected, actual)
 
     def test_filterMP3(self):
-        expected = ["testFile - testFileForGetter - audioSample.mp3",
-                    "testFile - testFileForSetter - audioSample.mp3"]
+        expected = ["testFile - testFileForGetter - audioSample - comment.mp3",
+                    "testFile - testFileForSetter - audioSample - comment.mp3"]
         actual = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))
         self.assertEqual(expected, actual)
 
@@ -74,10 +76,17 @@ class MP3TaggerShould(unittest.TestCase):
         self.assertEqual(expected, str(actual))
 
     def test_getGenre(self):
-        expected = "Thrash Metal"
+        expected = "sample"
         actual = mp3Tagger.readDirectory("exampleData")
         actual = mp3Tagger.filterMP3(actual)
         actual = mp3Tagger.getGenre("exampleData/" + actual[0])
+        self.assertEqual(expected, actual)
+
+    def test_getComment(self):
+        expected = "comment"
+        actual = mp3Tagger.readDirectory("exampleData")
+        actual = mp3Tagger.filterMP3(actual)
+        actual = mp3Tagger.getComment("exampleData/" + actual[0])
         self.assertEqual(expected, actual)
 
     def test_setTitle(self):
@@ -123,6 +132,13 @@ class MP3TaggerShould(unittest.TestCase):
         actual = mp3Tagger.getGenre("exampleData/" + song)
         self.assertEqual(expected, actual)
 
+    def test_setComment(self):
+        expected = "Comment"
+        song = mp3Tagger.filterMP3(mp3Tagger.readDirectory("exampleData"))[1]
+        mp3Tagger.setComment("exampleData/" + song, "Comment")
+        actual = mp3Tagger.getComment("exampleData/" + song)
+        self.assertEqual(expected, actual)
+
 
 # Funktion um Dateinamen zu ändern
 # Funktion um Verzeichnisse in verzeichnissen rekursiv(?) durchzugehen
@@ -130,6 +146,8 @@ class MP3TaggerShould(unittest.TestCase):
 # Skript: Track nummern vergeben, Titel = Track, Dateien umbenennen nach festgelegtem Schema
 
 # Exception schrieben falls ein feld leer ist!
+
+# Song in Audio umbenennen
 
 def main():
     unittest.main()

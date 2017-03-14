@@ -1,4 +1,5 @@
 import os
+import mutagen
 from mutagen.easyid3 import EasyID3
 
 
@@ -43,6 +44,10 @@ def getGenre(song):
     song = EasyID3(song)
     return song["genre"][0]
 
+def getComment(song):
+    song = mutagen.File(song)
+    return song["COMM::eng"].text[0]
+
 
 def setTitle(song, title):
     song = EasyID3(song)
@@ -82,5 +87,11 @@ def setYear(song, year):
 def setGenre(song, genre):
     song = EasyID3(song)
     song["genre"] = genre
+    song.save()
+    return song
+
+def setComment(song, comment):
+    song = mutagen.File(song)
+    song["COMM::eng"].text[0] = comment
     song.save()
     return song
