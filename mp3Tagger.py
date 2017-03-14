@@ -1,5 +1,6 @@
 import os
 import mutagen
+from mutagen.easyid3 import EasyID3
 
 # Dictionary for ID3v2.4.0 tags
 ID3v24 = {"title": "TIT2", "artist": "TPE1", "album": "TALB", "track": "TRCK", "year": "TDRC", "genre": "TCON",
@@ -41,3 +42,40 @@ def getYear(song):
 def getGenre(song):
     song = mutagen.File(song)
     return song[ID3v24['genre']].text[0]
+
+def setTitle(song, title):
+    song = EasyID3(song)
+    song["title"] = title
+    song.save()
+    return song
+
+def setArtist(song, artist):
+    song = EasyID3(song)
+    song["artist"] = artist
+    song.save()
+    return song
+
+def setAlbum(song, album):
+    song = EasyID3(song)
+    song["album"] = album
+    song.save()
+    return song
+
+def setTrack(song, track):
+    song = EasyID3(song)
+    song["tracknumber"] = track
+    song.save()
+    return song
+
+def setYear(song, year):
+    song = EasyID3(song)
+    song["date"] = year
+    song.save()
+    return song
+
+def setGenre(song, genre):
+    song = EasyID3(song)
+    song["genre"] = genre
+    song.save()
+    return song
+
