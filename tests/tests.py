@@ -140,15 +140,6 @@ class MP3TaggerShould(unittest.TestCase):
         self.assertEqual(expected, actual)
 
 
-# Funktion um Dateinamen zu ändern
-# Funktion um Verzeichnisse in verzeichnissen rekursiv(?) durchzugehen
-
-# Skript: Track nummern vergeben, Titel = Track, Dateien umbenennen nach festgelegtem Schema
-
-# Exception schrieben falls ein feld leer ist!
-
-# Song in Audio umbenennen
-
 def main():
     unittest.main()
 

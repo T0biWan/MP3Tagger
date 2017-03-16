@@ -90,8 +90,26 @@ def setGenre(song, genre):
     song.save()
     return song
 
+
 def setComment(song, comment):
     song = mutagen.File(song)
     song["COMM::eng"].text[0] = comment
     song.save()
     return song
+
+
+def setFileName(file, newName):
+    os.rename(file, newName)
+    return
+
+
+def buildFileNameFromSomeID3Tags(song):
+    separator = " - "
+    fileName = ""
+
+    fileName += getArtist(song) + separator
+    fileName += getTitle(song) + separator
+    fileName += getAlbum(song) + separator
+    fileName += getComment(song) + separator
+
+    return fileName
