@@ -15,6 +15,14 @@ def filterMP3(list):
     return mp3List
 
 
+def formatTracknumbersWithLeadingZeros(audio, maxRequiredDigits):
+    tracknumber = getTrack(audio)
+    numberOfLeadingZeros = maxRequiredDigits - len(str(tracknumber))
+    trackNumberWithLeadingZeros = "0" * numberOfLeadingZeros + str(tracknumber)
+    setTrack(audio, trackNumberWithLeadingZeros)
+    return
+
+
 def getTitle(audio):
     audio = EasyID3(audio)
     return audio["title"][0]
@@ -110,7 +118,7 @@ def buildFileNameFromSomeID3Tags(audio):
     fileName += getArtist(audio) + separator
     fileName += getTitle(audio) + separator
     fileName += getAlbum(audio) + separator
-    fileName += getComment(audio) + separator
+    fileName += getComment(audio)
 
     return fileName
 
@@ -118,3 +126,5 @@ def buildFileNameFromSomeID3Tags(audio):
 def setTrackNumberAsTitle(audio):
     setTitle(audio, getTrack(audio))
     return
+
+
