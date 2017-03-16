@@ -15,87 +15,87 @@ def filterMP3(list):
     return mp3List
 
 
-def getTitle(song):
-    song = EasyID3(song)
-    return song["title"][0]
+def getTitle(audio):
+    audio = EasyID3(audio)
+    return audio["title"][0]
 
 
-def getArtist(song):
-    song = EasyID3(song)
-    return song["artist"][0]
+def getArtist(audio):
+    audio = EasyID3(audio)
+    return audio["artist"][0]
 
 
-def getAlbum(song):
-    song = EasyID3(song)
-    return song["album"][0]
+def getAlbum(audio):
+    audio = EasyID3(audio)
+    return audio["album"][0]
 
 
-def getTrack(song):
-    song = EasyID3(song)
-    return song["tracknumber"][0]
+def getTrack(audio):
+    audio = EasyID3(audio)
+    return audio["tracknumber"][0]
 
 
-def getYear(song):
-    song = EasyID3(song)
-    return song["date"][0]
+def getYear(audio):
+    audio = EasyID3(audio)
+    return audio["date"][0]
 
 
-def getGenre(song):
-    song = EasyID3(song)
-    return song["genre"][0]
+def getGenre(audio):
+    audio = EasyID3(audio)
+    return audio["genre"][0]
 
-def getComment(song):
-    song = mutagen.File(song)
-    return song["COMM::eng"].text[0]
-
-
-def setTitle(song, title):
-    song = EasyID3(song)
-    song["title"] = title
-    song.save()
-    return song
+def getComment(audio):
+    audio = mutagen.File(audio)
+    return audio["COMM::eng"].text[0]
 
 
-def setArtist(song, artist):
-    song = EasyID3(song)
-    song["artist"] = artist
-    song.save()
-    return song
+def setTitle(audio, title):
+    audio = EasyID3(audio)
+    audio["title"] = title
+    audio.save()
+    return audio
 
 
-def setAlbum(song, album):
-    song = EasyID3(song)
-    song["album"] = album
-    song.save()
-    return song
+def setArtist(audio, artist):
+    audio = EasyID3(audio)
+    audio["artist"] = artist
+    audio.save()
+    return audio
 
 
-def setTrack(song, track):
-    song = EasyID3(song)
-    song["tracknumber"] = track
-    song.save()
-    return song
+def setAlbum(audio, album):
+    audio = EasyID3(audio)
+    audio["album"] = album
+    audio.save()
+    return audio
 
 
-def setYear(song, year):
-    song = EasyID3(song)
-    song["date"] = year
-    song.save()
-    return song
+def setTrack(audio, track):
+    audio = EasyID3(audio)
+    audio["tracknumber"] = track
+    audio.save()
+    return audio
 
 
-def setGenre(song, genre):
-    song = EasyID3(song)
-    song["genre"] = genre
-    song.save()
-    return song
+def setYear(audio, year):
+    audio = EasyID3(audio)
+    audio["date"] = year
+    audio.save()
+    return audio
 
 
-def setComment(song, comment):
-    song = mutagen.File(song)
-    song["COMM::eng"].text[0] = comment
-    song.save()
-    return song
+def setGenre(audio, genre):
+    audio = EasyID3(audio)
+    audio["genre"] = genre
+    audio.save()
+    return audio
+
+
+def setComment(audio, comment):
+    audio = mutagen.File(audio)
+    audio["COMM::eng"].text[0] = comment
+    audio.save()
+    return audio
 
 
 def setFileName(file, newName):
@@ -103,13 +103,18 @@ def setFileName(file, newName):
     return
 
 
-def buildFileNameFromSomeID3Tags(song):
+def buildFileNameFromSomeID3Tags(audio):
     separator = " - "
     fileName = ""
 
-    fileName += getArtist(song) + separator
-    fileName += getTitle(song) + separator
-    fileName += getAlbum(song) + separator
-    fileName += getComment(song) + separator
+    fileName += getArtist(audio) + separator
+    fileName += getTitle(audio) + separator
+    fileName += getAlbum(audio) + separator
+    fileName += getComment(audio) + separator
 
     return fileName
+
+
+def setTrackNumberAsTitle(audio):
+    setTitle(audio, getTrack(audio))
+    return
