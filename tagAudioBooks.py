@@ -28,5 +28,5 @@ for root, dirs, files in os.walk(path):                                         
 
 #            mp3Tagger.setTrack(audio, "")                                               # Delete Tracknumber
 
-            status = "%4d/" % (counter) + str(len(files)) + "\t" + os.path.basename(audio) + "\t --> \t" + os.path.basename(newFileName)
-            print(status)
+
+            print("%4d/" % (counter) + str(len(files)) + "\t" + os.path.basename(audio) + "\t --> \t" + os.path.basename(newFileName))

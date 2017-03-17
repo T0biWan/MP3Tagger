@@ -11,3 +11,7 @@ Unit tests enabled through Python's unittest-module.
 - Filters for mp3-data
 - Gets and sets title, artist, album, track, year, genre and comment
 - Renames files according to their ID3-tags
+- Formats Tracknumbers with leading zeros
+
+## TagAudioBooks
+Use case of my own where I want the titles of audiobooks to be equal to the tracknumbers.
