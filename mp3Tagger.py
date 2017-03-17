@@ -112,7 +112,9 @@ def setFileName(file, newName):
     return
 
 
-def buildFileNameFromSomeID3Tags(audio):
+def buildFileNameFromSomeID3Tags(audio, extension):
+    # Artist - Title - Album - CommentExtension
+
     separator = " - "
     fileName = ""
 
@@ -120,6 +122,7 @@ def buildFileNameFromSomeID3Tags(audio):
     fileName += getTitle(audio) + separator
     fileName += getAlbum(audio) + separator
     fileName += getComment(audio)
+    fileName += extension
 
     return fileName
 
