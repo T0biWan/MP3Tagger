@@ -15,3 +15,4 @@ Unit tests enabled through Python's unittest-module.
 
 ## TagAudioBooks
 Use case of my own where I want the titles of audiobooks to be equal to the tracknumbers.
+To solve this I use functions of MP3Tagger and Python's os-module.
