@@ -10,7 +10,8 @@ def readDirectory(path):
 def filterMP3(list):
     mp3List = []
     for element in list:
-        if ".mp3" in element:
+        fileExtension = os.path.splitext(element)[1]
+        if fileExtension == ".mp3":
             mp3List.append(element)
     return mp3List
 
